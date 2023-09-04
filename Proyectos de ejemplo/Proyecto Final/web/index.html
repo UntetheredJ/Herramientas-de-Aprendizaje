@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Tienda de Ropa</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="CSS/signin.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    </head>
+    <body>
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="BuscarRopa.jsp" class="nav-link px-2 text-white" >Catálogo</a></li>
+                        <li><a href="Ropa.jsp" class="nav-link px-2 text-white">Agregar Ropa</a></li>
+                        <li><a href="Compra.jsp" class="nav-link px-2 text-white">Historial Compras</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="div-center" ng-app="login" ng-controller="loginController as lc">
+            <form class="form">
+                <h1 class="h3 mb-3 fw-normal" style="text-align: center">Por favor ingresar</h1>
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" ng-model="lc.nombre_usuario">
+                    <label for="floatingInput">Correo Electronico</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" ng-model="lc.contrasenna">
+                    <label for="floatingPassword">Contraseña</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recuerdame
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" ng-click="lc.iniciarSesion()">Iniciar Sesion</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="location.href = 'CrearUsuario.jsp'" >Crear Cuenta</button>
+            </form>
+        </div>
+        <script>
+            var app = angular.module('login', []);
+            app.controller('loginController', ['$http', controladorLogin]);
+            function controladorLogin($http) {
+                var lc = this;
+                lc.iniciarSesion = function () {
+                    var parametros = {
+                        proceso: 'iniciarSesion',
+                        nombre_usuario: lc.nombre_usuario,
+                        contrasenna: lc.contrasenna
+                    };
+                    $http({
+                        method: 'POST',
+                        url: 'peticionesUsuario.jsp',
+                        params: parametros
+                    }).then(function (res) {
+                        if (res.data.ok === true) {
+                            if (res.data.iniciarSesion === true) {
+                                window.location.href = "BuscarRopa.jsp";
+                            } else {
+                                alert('Verifique sus datos');
+                            }
+                        } else {
+                            alert(res.data.errorMsg);
+                        }
+                    });
+                };
+            }
+            ;
+        </script>
+    </body>
+</html>

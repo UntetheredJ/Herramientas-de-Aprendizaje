@@ -1,0 +1,50 @@
+body{
+    display: flex;
+    background-color: #DBDEDE;
+    width: 99%;
+    height: 99vh;
+}
+
+.div-derecho {
+    width: 30%;
+    margin: 2%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 5px 3px 5px 5px;
+}
+
+.div-derecho div {
+    margin: 4%;
+}
+
+.div-izquierdo {
+    width: 62%;
+    margin: 2%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 5px 3px 5px 5px;
+}
+
+.div-izquierdo div {
+    margin: 4%;
+}
+
+.tabla-usuarios {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.cabeza {
+    width: 100%;
+}
+
+.cabecera-tabla {
+    background-color: #B2BFBF;
+    padding: 5px;
+    width: 11%;
+}
+
+.contenido-tabla {
+    padding: 5px;
+}

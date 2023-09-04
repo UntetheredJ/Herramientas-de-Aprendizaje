@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Formulario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <link rel="stylesheet" href="Style.css">
+    </head>
+    <body ng-app="formulario" ng-controller="formularioController as fc" style="height: 98vh;">
+        <div class="div-derecho">
+            <div>
+                <h1>Formulario</h1>
+            </div>
+            <div>
+                <a>Id</a>
+                <input type = "number" id="id">
+                <a>Tipo Id</a>
+                <select id="tipo_id">
+                    <option value="CC">CC</option>
+                    <option value="CE">CE</option>
+                    <option value="TI">TI</option>
+                </select>
+            </div>
+            <div>
+                <a>Nombre</a>
+                <input type = "text" id="nombres">
+                <a>Apellido</a>
+                <input type = "text" id="apellidos">
+            </div>
+            <div>
+                <a>Correo</a>
+                <input type = "email" id="correo">
+                <a>Direccion</a>
+                <input type = "text" id="direccion">
+            </div>
+            <div>
+                <a>Telefono</a>
+                <input type = "number" id="telefono">
+                <a>Favorito</a>
+                <input type = "checkbox" id="favorito">
+            </div>
+            <div>
+                <button ng-click="fc.agregarUsuarios()">Añadir</button>
+            </div>
+        </div>
+        <div class="div-izquierdo">
+            <div>
+                <h1>Agenda</h1>
+            </div>
+            <div>
+                <table class="tabla-usuarios">
+                    <tr class="cabeza">
+                        <th class="cabecera-tabla">Id</th>
+                        <th class="cabecera-tabla">Tipo Id</th>
+                        <th class="cabecera-tabla">Nombres</th>
+                        <th class="cabecera-tabla">Apellidos</th>
+                        <th class="cabecera-tabla">Correo</th>
+                        <th class="cabecera-tabla">Direccion</th>
+                        <th class="cabecera-tabla">Telefono</th>
+                        <th class="cabecera-tabla">Favorito</th>
+                        <th class="cabecera-tabla">Mover</th>
+                        <th class="cabecera-tabla">Eliminar</th>
+                    </tr>
+                    <tr ng-repeat="u in fc.usuarios">
+                        <th class="contenido-tabla">{{u.id}}</th>
+                        <th class="contenido-tabla">{{u.tipo_id}}</th>
+                        <th class="contenido-tabla">{{u.nombres}}</th>
+                        <th class="contenido-tabla">{{u.apellidos}}</th>
+                        <th class="contenido-tabla">{{u.correo}}</th>
+                        <th class="contenido-tabla">{{u.direccion}}</th>
+                        <th class="contenido-tabla">{{u.telefono}}</th>
+                        <th class="contenido-tabla">{{u.favorito}}</th>
+                        <th class="contenido-tabla">
+                            <button ng-click="fc.subir(u.id)">↑</button>
+                            <button ng-click="fc.bajar(u.id)">↓</button>
+                        </th>
+                        <th class="contenido-tabla">
+                            <button ng-click="fc.eliminar(u.id)">X</button>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script>
+
+                    var formulario = angular.module('formulario', []);
+                    formulario.controller('formularioController', [formularioController]);
+                    function formularioController() {
+                        var fc = this;
+                        var usuarios = [];
+
+                        fc.agregarUsuarios = function () {
+                            var id = document.getElementById("id").value;
+                            var tipo_id = document.getElementById("tipo_id").value;
+                            var nombres = document.getElementById("nombres").value;
+                            var apellidos = document.getElementById("apellidos").value;
+                            var correo = document.getElementById("correo").value;
+                            var direccion = document.getElementById("direccion").value;
+                            var telefono = document.getElementById("telefono").value;
+                            var favorito = document.getElementById("favorito").checked;
+
+                            var usuario = new Object();
+
+                            if (id.length === 0 || nombres.length === 0 || apellidos.length === 0
+                                    | correo.length === 0 | direccion.length === 0 | telefono.length === 0)
+                            {
+                                alert("Llenar todos los campos");
+                            } else {
+                                var tamañoLista = usuarios.length;
+                                if (tamañoLista === 0) {
+                                    usuario.id = id;
+                                    usuario.tipo_id = tipo_id;
+                                    usuario.nombres = nombres;
+                                    usuario.apellidos = apellidos;
+                                    usuario.correo = correo;
+                                    usuario.direccion = direccion;
+                                    usuario.telefono = telefono;
+                                    usuario.favorito = favorito;
+                                    usuarios.push(usuario);
+                                } else {
+                                    var existe = false;
+                                    for (var i = 0; i < tamañoLista; i++) {
+                                        if (id === usuarios[i].id) {
+                                            existe = true;
+                                        }
+                                    }
+                                    if (existe === false) {
+                                        usuario.id = id;
+                                        usuario.tipo_id = tipo_id;
+                                        usuario.nombres = nombres;
+                                        usuario.apellidos = apellidos;
+                                        usuario.correo = correo;
+                                        usuario.direccion = direccion;
+                                        usuario.telefono = telefono;
+                                        usuario.favorito = favorito;
+                                        usuarios.push(usuario);
+                                    } else {
+                                        alert("Este Id ya existe");
+                                    }
+                                }
+                                listar();
+                            }
+                        }
+                        ;
+                        fc.eliminar = function (id) {
+                            var tamañoLista = usuarios.length;
+                            for (var i = 0; i < tamañoLista; i++) {
+                                if (usuarios[i].id === id) {
+                                    usuarios.splice(i, 1);
+                                }
+                            }
+                            listar();
+                        };
+                        fc.subir = function (id) {
+                            var tamañoLista = usuarios.length;
+                            for (i = 0; i < tamañoLista; i++) {
+                                if (id === usuarios[i].id) {
+                                    var elemento = usuarios[i];
+                                    if (usuarios.indexOf(elemento) === 0) {
+                                        alert("El elemento no se puede mover hacia arriba");
+                                    } else {
+                                        var elementoAnterior = usuarios[i - 1];
+                                        usuarios[i] = elementoAnterior;
+                                        usuarios[i - 1] = elemento;
+                                    }
+                                }
+                            }
+                            listar();
+                        };
+                        fc.bajar = function (id) {
+                            var tamañoLista = usuarios.length;
+                            for (i = 0; i < tamañoLista; i++) {
+                                if (id === usuarios[i].id) {
+                                    var elemento = usuarios[i];
+                                    if (usuarios.indexOf(elemento) === tamañoLista - 1) {
+                                        alert("El elemento no se puede mover hacia abajo");
+                                    } else {
+                                        var elementoSiguiente = usuarios[i + 1];
+                                        usuarios[i] = elementoSiguiente;
+                                        usuarios[i + 1] = elemento;
+                                        break;
+                                    }
+                                }
+                            }
+                            listar();
+                        };
+                        listar = function () {
+                            fc.usuarios = usuarios;
+                        };
+                        window.onload = listar();
+                    }
+        </script>
+    </body>
+</html>

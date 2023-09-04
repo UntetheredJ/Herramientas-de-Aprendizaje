@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Calculadora</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="Style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div>
+            <table>
+                <tr id="primera-fila">
+                    <th><input id = "campo1" type="text" disabled></th>
+                    <th><label id = "operador"></label></th>
+                    <th><input id = "campo2" type="text" disabled></th>
+                    <th><input id = "respuesta" type="text" disabled></th>
+                </tr>
+                <tr class="botones">
+                    <th><button id = "number1" value = 1 onclick = "getNumber1()">1</button></th>
+                    <th><button id = "number2" value = 2 onclick = "getNumber2()">2</button></th>
+                    <th><button id = "number3" value = 3 onclick = "getNumber3()">3</button></th>
+                    <th><button onclick = "suma()">+</button></th>
+                </tr>
+                <tr class="botones">
+                    <th><button id = "number4" value = 4 onclick = "getNumber4()">4</button></th>
+                    <th><button id = "number5" value = 5 onclick = "getNumber5()">5</button></th>
+                    <th><button id = "number6" value = 6 onclick = "getNumber6()">6</button></th>
+                    <th><button onclick = "resta()">-</button></th>
+                </tr>
+                <tr class="botones">
+                    <th><button id = "number7" value = 7 onclick = "getNumber7()">7</button></th>
+                    <th><button id = "number8" value = 8 onclick = "getNumber8()">8</button></th>
+                    <th><button id = "number9" value = 9 onclick = "getNumber9()">9</button></th>
+                    <th><button onclick = "multiplicacion()">x</button></th>
+                </tr>
+                <tr class="botones">
+                    <th><button onclick="borrar()">←</button></th>
+                    <th><button id = "number0" value = 0 onclick = "getNumber0()">0</button></th>
+                    <th><button onclick="reset()">Reset</button></th>
+                    <th><button onclick = "division()">%</button></th>
+                </tr>
+                <tr class="botones">
+                    <th colspan="2">
+                        <select id="campo">
+                            <option value="1">Campo 1</option>
+                            <option value="2">Campo 2</option>
+                        </select>
+                    </th>
+                    <th colspan="2">
+                        <button id="calcular" type="button" onclick='Calcular()'>=</button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <script>
+            function getNumber1(){
+                var number = document.getElementById('number1').value;
+                addValue(number);
+            }
+            function getNumber2(){
+                var number = document.getElementById('number2').value;
+                addValue(number);
+            }
+            function getNumber3(){
+                var number = document.getElementById('number3').value;
+                addValue(number);
+            }
+            function getNumber4(){
+                var number = document.getElementById('number4').value;
+                addValue(number);
+            }
+            function getNumber5(){
+                var number = document.getElementById('number5').value;
+                addValue(number);
+            }
+            function getNumber6(){
+                var number = document.getElementById('number6').value;
+                addValue(number);
+            }
+            function getNumber7(){
+                var number = document.getElementById('number7').value;
+                addValue(number);
+            }
+            function getNumber8(){
+                var number = document.getElementById('number8').value;
+                addValue(number);
+            }
+            function getNumber9(){
+                var number = document.getElementById('number9').value;
+                addValue(number);
+            }
+            function getNumber0(){
+                var number = document.getElementById('number0').value;
+                addValue(number);
+            }
+            function addValue(number){
+                var selection = document.getElementById("campo");
+                var option = selection.options[selection.selectedIndex].value;
+                if (option == 1) {
+                    var campo1 = document.getElementById('campo1').value;
+                    document.getElementById('campo1').value = campo1 + number;
+                } else if (option == 2) {
+                    var campo2 = document.getElementById('campo2').value;
+                    document.getElementById('campo2').value = campo2 + number;
+                }
+            }
+            function borrar(){
+                var selection = document.getElementById("campo");
+                var option = selection.options[selection.selectedIndex].value;
+                if (option == 1) {
+                    var campo1 = document.getElementById('campo1').value;
+                    document.getElementById('campo1').value = campo1.substring(0, campo1.length-1);
+                } else if (option == 2) {
+                    var campo2 = document.getElementById('campo2').value;
+                    document.getElementById('campo2').value = campo2.substring(0, campo2.length-1);
+                }
+            }
+            function reset(){
+                document.getElementById('campo1').value = "";
+                document.getElementById('campo2').value = "";
+                document.getElementById('respuesta').value = "";
+                document.getElementById('operador').innerHTML = "";
+            }
+            function suma(){
+                document.getElementById('operador').innerHTML = "+";
+            }
+            function resta(){
+                document.getElementById('operador').innerHTML = "-";
+            }
+            function multiplicacion(){
+                document.getElementById('operador').innerHTML = "x";
+            }
+            function division(){
+                document.getElementById('operador').innerHTML = "%";
+            }
+            function Calcular(){
+                var campo1 = document.getElementById('campo1').value;
+                var campo2 = document.getElementById('campo2').value;
+                var operador = document.getElementById('operador').innerHTML;
+                if ( campo1.length != 0 & campo2.length != 0 ) {
+                    if (operador == '+') {
+                        var resultado = parseInt(campo1) + parseInt(campo2);
+                        document.getElementById('respuesta').value = resultado;
+                    } else if (operador == '-') {
+                        var resultado = parseInt(campo1) - parseInt(campo2);
+                        document.getElementById('respuesta').value = resultado;
+                    } else if (operador == 'x') {
+                        var resultado = parseInt(campo1) * parseInt(campo2);
+                        document.getElementById('respuesta').value = resultado;
+                    } else if (operador == '%') {
+                        var resultado = parseInt(campo1) / parseInt(campo2);
+                        document.getElementById('respuesta').value = resultado;
+                    } else {
+                        alert("Eliga un operador");
+                    }
+                } else {
+                    alert("Llenar los campos");
+                }
+            }
+        </script>
+    </body>
+</html>

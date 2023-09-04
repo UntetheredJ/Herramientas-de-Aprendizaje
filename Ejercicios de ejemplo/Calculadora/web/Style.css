@@ -1,0 +1,49 @@
+body div {
+    align-content: center;
+    display: inline;
+}
+
+body div table tr {
+    margin: 10px;
+}
+
+table {
+    background-color: #7AD9EB;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#primera-fila th input{
+    width: 100px;
+    height: 30px;
+    box-shadow: 5px 5px 0px 0px;
+    border-radius: 5px;
+}
+
+#primera-fila th label {
+    width: 50px;
+    height: 30px;
+}
+
+.botones th button{
+    width: 50px;
+    height: 50px;
+    box-shadow: 5px 5px 0px 0px;
+    background-color: #55A2D9;
+    border-radius: 5px;
+}
+
+.botones th select{
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    box-shadow: 5px 5px 0px 0px;
+    background-color: #55A2D9;
+    border-radius: 5px;
+    border-color: black;
+}
+
+.botones th button:hover {
+    background-color: #86C0EA;
+}
