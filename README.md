@@ -1,6 +1,6 @@
 # Herramientas de Aprendizaje
 
-![Banner Herramientas](https://github.com/UntetheredJ/Herramientas-de-Aprendizaje/assets/101756457/96e8a3b4-5d62-4924-b500-52c2a8f60683)
+![Banner Herramientas](https://github.com/UntetheredJ/Herramientas-de-Aprendizaje/assets/101756457/deab1c6e-8c85-4874-8d16-335d73263407)
 
 Aquí se presentan varios recursos para aprender y ejemplos de aplicaciones web de las tecnologías de los cursos de desarrollo web ofrecidos por el [Grupo Calumet](http://calumet.uis.edu.co/).
 
@@ -115,6 +115,8 @@ Desarrollar bases de datos con MySQL y cómo conectarlas con un servidor Java en
 ## Licencia
 
 [The MIT License](http://opensource.org/licenses/MIT) (MIT)
+
+![LogoCalumet2](https://github.com/UntetheredJ/Herramientas-de-Aprendizaje/assets/101756457/7ba799ab-29af-42e0-81b8-ad891e508176)
 
 Copyright (c) 2023 [Grupo Calumet](http://calumet.uis.edu.co/)
 
