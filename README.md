@@ -116,7 +116,7 @@ Desarrollar bases de datos con MySQL y cómo conectarlas con un servidor Java en
 
 [The MIT License](http://opensource.org/licenses/MIT) (MIT)
 
-![LogoCalumet2](https://github.com/UntetheredJ/Herramientas-de-Aprendizaje/assets/101756457/7ba799ab-29af-42e0-81b8-ad891e508176)
+<img src="https://github.com/UntetheredJ/Herramientas-de-Aprendizaje/assets/101756457/7ba799ab-29af-42e0-81b8-ad891e508176" width="250" height="250">
 
 Copyright (c) 2023 [Grupo Calumet](http://calumet.uis.edu.co/)
 
