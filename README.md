@@ -1,5 +1,6 @@
 # Herramientas de Aprendizaje
-Grupo Calumet
+
+![Banner Herramientas](https://github.com/UntetheredJ/Herramientas-de-Aprendizaje/assets/101756457/96e8a3b4-5d62-4924-b500-52c2a8f60683)
 
 Aquí se presentan varios recursos para aprender y ejemplos de aplicaciones web de las tecnologías de los cursos de desarrollo web ofrecidos por el [Grupo Calumet](http://calumet.uis.edu.co/).
 
