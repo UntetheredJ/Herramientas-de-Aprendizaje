@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 style="text-align:center">Cantidad de Tipo Documentos: {{tipoDocumentos.length}}</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor= "let tipoDocumento of tipoDocumentos" class="center">
+                        <td>{{tipoDocumento.id}}</td>
+                        <td>{{tipoDocumento.nombre}}</td>
+                        <td>{{tipoDocumento.descripcion}}</td>
+                        <td>
+                            <button (click)='Edit(tipoDocumento)' class="btn btn-warning" style="margin-right: 10px;">Editar</button>
+                            <button (click)='Delete(tipoDocumento)' class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

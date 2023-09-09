@@ -1,0 +1,57 @@
+<div class="container col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 style="text-align:center">Agregar</h3>
+        <div class="class-body">
+          <form action="">
+            <div class="form-group">
+              <label for="">Nombres:</label>
+              <input [(ngModel)]="persona.nombres" name="nombres" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Apellidos:</label>
+              <input [(ngModel)]="persona.apellidos" name="apellidos" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">ID de Tipo Documento:</label>
+              <select [(ngModel)]="persona.tipoDocumento" name="tipoDocumento" class="form-select">
+                <option *ngFor="let tipoDocumento of tipoDocumentos" [ngValue]="tipoDocumento">{{tipoDocumento.nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Documento:</label>
+              <input [(ngModel)]="persona.documento" name="documento" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">ID de Ciudad:</label>
+              <select [(ngModel)]="persona.ciudad" name="ciudad" class="form-select">
+                <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">{{ciudad.nombre}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Fecha de Nacimiento:</label>
+              <input [(ngModel)]="persona.fechaNacimiento" name="fechaNacimiento" type="date" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Email:</label>
+              <input [(ngModel)]="persona.email" name="email" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Teléfono:</label>
+              <input [(ngModel)]="persona.telefono" name="telefono" type="number" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Usuario:</label>
+              <input [(ngModel)]="persona.usuario" name="usuario" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Password:</label>
+              <input [(ngModel)]="persona.password" name="password" type="text" class="form-control">
+            </div>
+            <br>
+            <button (click)="Guardar()" class="btn btn-success">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

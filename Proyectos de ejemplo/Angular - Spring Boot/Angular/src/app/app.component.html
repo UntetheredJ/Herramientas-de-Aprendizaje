@@ -1,0 +1,35 @@
+<br>
+<div style="text-align:center">
+  <h1>
+    Proyecto SPA
+  </h1>
+</div>
+<div class="container">
+<button (click)="ListarPersona()" class="btn btn-primary" style="margin-right: 10px;">
+  Listar Personas
+</button>
+<button (click)="NuevaPersona()" class="btn btn-success">
+  Nueva Persona
+</button>
+
+<br>
+
+<button (click)="ListarCiudad()" class="btn btn-primary" style="margin-right: 10px;">
+  Listar Ciudades
+</button>
+<button (click)="NuevaCiudad()" class="btn btn-success">
+  Nueva Ciudad
+</button>
+
+<br>
+
+<button (click)="ListarTipoDocumento()" class="btn btn-primary" style="margin-right: 10px;">
+  Listar TipoDoc
+</button>
+<button (click)="NuevoTipoDocumento()" class="btn btn-success">
+  Nuevo TipoDoc
+</button>
+</div>
+<br>
+
+<router-outlet></router-outlet>

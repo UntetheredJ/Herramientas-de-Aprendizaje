@@ -1,0 +1,25 @@
+<div class="container col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 style="text-align:center">Editar</h3>
+        <div class="card-body">
+          <form action="">
+            <div class="form-group">
+                <label for="">Id:{{ciudad.id}}</label>
+                
+            </div>  
+            <div class="form-group">
+              <label for="">Nombre:</label>
+              <input [(ngModel)]="ciudad.nombre" name="nombre" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="">Descripción:</label>
+              <input [(ngModel)]="ciudad.descripcion" name="descripcion" type="text" class="form-control">
+            </div>
+            <br>
+            <button (click)="Actualizar(ciudad)" class="btn btn-success">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
