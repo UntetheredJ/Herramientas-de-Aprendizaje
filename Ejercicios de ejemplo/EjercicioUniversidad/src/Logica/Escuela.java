@@ -13,10 +13,29 @@ import java.util.ArrayList;
 public class Escuela{
     private String nombre;
     private ArrayList<Estudiante> estudiantes;
-
+    
     public Escuela(String nombre){
         this.nombre=nombre;
         estudiantes=new ArrayList<Estudiante>();
+    }
+    
+    public Escuela() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public ArrayList<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(ArrayList<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
     }
 
     public void agregarEstudiante(Estudiante est){
@@ -25,7 +44,7 @@ public class Escuela{
 
     public void imprimirEscuela(){
         System.out.println("$$$$$$$$$$$$$$$$$");
-        System.out.println("Escuela = "+getNombreE());
+        System.out.println("Escuela = "+getNombre());
         System.out.println("$$$$$$$$$$$$$$$$$");
         for(int i=0; i<estudiantes.size(); i++){
             Estudiante est = estudiantes.get(i);
@@ -34,9 +53,5 @@ public class Escuela{
             est.imprimirEstudiante();
             System.out.println("=====================");
         }
-    }
-
-    public String getNombreE(){
-        return nombre;
     }
 }

@@ -18,6 +18,25 @@ public class Universidad{
         this.nombre=nombre;
         facultades = new ArrayList<Facultad>();
     }
+    
+    public Universidad() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public ArrayList<Facultad> getFacultades() {
+        return facultades;
+    }
+
+    public void setFacultades(ArrayList<Facultad> facultades) {
+        this.facultades = facultades;
+    }
 
     public void agregarFacultad(Facultad fac){
         facultades.add(fac);
@@ -25,7 +44,7 @@ public class Universidad{
 
     public void imprimirU(){
         System.out.println("**************************");
-        System.out.println("Universidad: "+getNombreU());
+        System.out.println("Universidad: "+getNombre());
         System.out.println("**************************");
         for(int i=0; i<facultades.size(); i++){
             Facultad fac = facultades.get(i);
@@ -33,14 +52,10 @@ public class Universidad{
         }
     }
 
-    public String getNombreU(){
-        return nombre;
-    }
-
     public void mostrarFacultades(){
         for(int i=0; i<facultades.size(); i++){
             Facultad fac = facultades.get(i);
-            System.out.println((i)+" Facultad: "+fac.getNombreFacultad());
+            System.out.println((i)+" Facultad: "+fac.getNombre());
         }
     }
     
