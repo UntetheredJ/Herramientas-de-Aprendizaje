@@ -59,15 +59,9 @@ public class Universidad{
         }
     }
     
-    public void agregarEscuela(int id,Escuela esc){
-        facultades.get(id).agregarEscuela(esc);
+    public Facultad getFacultadById(int id) {
+        Facultad fac = facultades.get(id);
+        return fac;
     }
     
-    public void mostrarEscuelaPorId(int id){
-        facultades.get(id).mostrarEscuelas();
-    }
-    
-    public void agregarEstudiantePorId(int idF,int idE, Estudiante es){
-        facultades.get(idE).agregarEstudiantePorId(idE,es);
-    }
 }

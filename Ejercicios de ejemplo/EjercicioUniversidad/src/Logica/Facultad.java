@@ -58,7 +58,12 @@ public class Facultad{
             System.out.println((i)+" Escuela: "+es.getNombre());
         }
     }
-    
+
+    public Escuela getEscuelaById(int id) {
+        Escuela es = escuelas.get(id);
+        return es;
+    }
+
     public void agregarEstudiantePorId(int id, Estudiante est){
         escuelas.get(id).agregarEstudiante(est);
     }

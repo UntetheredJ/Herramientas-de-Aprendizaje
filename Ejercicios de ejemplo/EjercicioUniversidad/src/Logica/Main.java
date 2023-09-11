@@ -48,22 +48,10 @@ public class Main {
                         u1.mostrarFacultades();
                         break;
                     case 5:
-                        System.out.println("Facultades");
-                        u1.mostrarFacultades();
-                        System.out.println("Elegir Facultad");
-                        int opF = opcion.nextInt();
-                        opcion.reset();
-                        System.out.println("Escuelas");
-                        u1.mostrarEscuelaPorId(opF);
+                        mostrarEscuela();
                         break;
                     case 6:
-                        System.out.println("Facultades");
-                        u1.mostrarFacultades();
-                        System.out.println("Elegir Facultad");
-                        int opFa = opcion.nextInt();
-                        opcion.reset();
-                        System.out.println("Escuelas");
-                        u1.mostrarEscuelaPorId(opFa);
+                        mostrarEstudiante();
                         break;
                     default:
                         System.out.println("Opcion invalida");
@@ -88,11 +76,12 @@ public class Main {
             System.out.println("Elegir Facultad");
             int opF = opcion.nextInt();
             opcion.reset();
+            Facultad fac = u1.getFacultadById(opF);
             System.out.println("=======Nombre de Escuela======");
             String nombreE = opcion.next();
             opcion.reset();
             Escuela e = new Escuela(nombreE);
-            u1.agregarEscuela(opF, e);
+            fac.agregarEscuela(e);
         }
 
         public static void registrarEstudiante() {
@@ -102,13 +91,47 @@ public class Main {
             System.out.println("Elegir Facultad");
             int opF = opcion.nextInt();
             opcion.reset();
+            Facultad fac = u1.getFacultadById(opF);
             System.out.println("Escuelas");
-            u1.mostrarEscuelaPorId(opF);
+            fac.mostrarEscuelas();
             System.out.println("Elegir Escuela");
             int opE = opcion.nextInt();
             opcion.reset();
-            Estudiante est = new Estudiante("n", 1, 1);
-            u1.agregarEstudiantePorId(opF, opE, est);
+            Escuela es = fac.getEscuelaById(opE);
+            System.out.println("Ingresar nombre");
+            String nombre = opcion.next();
+            System.out.println("Ingresar semestre");
+            int grado = opcion.nextInt();
+            System.out.println("Ingresar promedio");
+            float promedio = opcion.nextFloat();
+            Estudiante est = new Estudiante(nombre, grado, promedio);
+            es.agregarEstudiante(est);
+        }
+
+        public static void mostrarEscuela() {
+            System.out.println("Facultades");
+            u1.mostrarFacultades();
+            System.out.println("Elegir Facultad");
+            int opF = opcion.nextInt();
+            opcion.reset();
+            Facultad fac = u1.getFacultadById(opF);
+            System.out.println("Escuelas");
+            fac.mostrarEscuelas();
+        }
+
+        public static void mostrarEstudiante() {
+            System.out.println("Facultades");
+            u1.mostrarFacultades();
+            System.out.println("Elegir Facultad");
+            int opFa = opcion.nextInt();
+            Facultad fac1 = u1.getFacultadById(opFa);
+            opcion.reset();
+            System.out.println("Escuelas");
+            fac1.mostrarEscuelas();
+            System.out.println("Elegir Escuela");
+            int opEs = opcion.nextInt();
+            Escuela esc = fac1.getEscuelaById(opEs);
+            esc.imprimirEscuela();
         }
 
     }
