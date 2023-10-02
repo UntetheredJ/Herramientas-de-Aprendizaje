@@ -36,11 +36,10 @@
                                 url: 'peticionesTareas.jsp',
                                 params: parametros
                             }).then(function (res) {
-                                console.log(res);
                                 if (res.data.ok === true) {
-                                    if (res.data.guardar === true) {
+                                    if (res.data.Agregar === true) {
                                         console.log("Correcto");
-                                        tC.listTask;
+                                        window.location.reload();
                                     } else {
                                         console.log("Error");
                                     }

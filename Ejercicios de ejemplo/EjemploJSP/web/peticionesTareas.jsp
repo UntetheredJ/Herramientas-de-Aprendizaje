@@ -20,7 +20,7 @@
         respuesta += "\"ok\": true,";
 
         if (proceso.equals("Agregar")) {
-            respuesta += "\"" + proceso + "\": true";
+            
 
             String id = request.getParameter("id");
             String descripcion = request.getParameter("descripcion");

@@ -35,7 +35,7 @@ public class ConexionBD {
         db = "ejemploDB";
         url = "jdbc:mysql://" + host + "/" + db+"?serverTimezone=UTC"; 		//URL DB
         username = "root";                      			//usuario base de datos global 
-        password = "daniel101002";
+        password = "1234";
         try {
             //Asignacin del Driver
             Class.forName(DB_driver);
