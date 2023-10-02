@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lista de Tareas</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    </head>
+    <body ng-app="todo" ng-controller="todoController as tC">
+        <h1>Lista de Tareas</h1>
+        <input type="text" ng-model="tC.idNewTask" placeholder="Id tarea">
+        <input type="text" ng-model="tC.newTask" placeholder="Nueva tarea">
+        <button ng-click="tC.addTask()">Agregar</button>
+
+        <ul>
+            <li ng-repeat="task in tC.tasks">
+                {{task.id}} {{task.descripcion}}
+            </li>
+        </ul>
+
+        <script>
+                    var todo = angular.module('todo', [])
+                    todo.controller('todoController', ['$http', todoController]);
+
+                    function todoController($http) {
+                        tC = this;
+
+                        tC.tasks = [];
+
+                        tC.addTask = function () {
+                            var parametros = {
+                                proceso: 'Agregar',
+                                id: tC.idNewTask,
+                                descripcion: tC.newTask
+                            };
+                            $http({
+                                method: 'POST',
+                                url: 'peticionesTareas.jsp',
+                                params: parametros
+                            }).then(function (res) {
+                                console.log(res);
+                                if (res.data.ok === true) {
+                                    if (res.data.guardar === true) {
+                                        console.log("Correcto");
+                                        tC.listTask;
+                                    } else {
+                                        console.log("Error");
+                                    }
+                                } else {
+                                    alert(res.data.errorMsg);
+                                }
+                            });
+                        }
+
+                        tC.listTask = function () {
+                            var parametros = {
+                                proceso: 'Listar'
+                            };
+                            $http({
+                                method: 'POST',
+                                url: 'peticionesTareas.jsp',
+                                params: parametros
+                            }).then(function (res) {
+                                tC.tasks = res.data.Tareas;
+                            });
+                        };
+                        
+                        window.onload = tC.listTask;
+                        
+                    }
+
+        </script>
+    </body>
+</html>
